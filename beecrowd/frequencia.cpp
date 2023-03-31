@@ -5,7 +5,7 @@
  
 using namespace std;
 
-void sort(string S){
+string sort(string S){
   for(int i = 0; i < S.length()-1; i++){  
     int min_idx = i;    
     for(int j = i+1; j < S.length(); j++){
@@ -15,13 +15,13 @@ void sort(string S){
     }
     swap(S[i], S[min_idx]);
   }
-  cout << S << endl;
+  return S;
 }
 
 int main() {
   string entrada;
   getline(cin, entrada);
-  sort(entrada);
+  cout << sort(entrada);
 
   return 0;
 }
