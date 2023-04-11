@@ -35,6 +35,26 @@ int binary_search(value_t A[], value_t target, index_t l, index_t r) {
   return -1;
 }
 
+/// Execute an iterative binary search on an array.
+int binary_search_ptr(value_t target, value_t *first, value_t *last) {
+  int *count = last - first;
+  int *step = count/2;
+  int *mid = first + step;
+
+  while(first <= last){
+    count = last - first;
+    step = count/2;
+    mid = first + step;
+    if(*mid == target) 
+      return mid;
+    else if(*mid < target)
+      count = step;
+    else
+      count = count - (step+1);
+  }
+  return -1;
+}
+
 /// Execute a recursive binary search on an array.
 int binary_search_rec(value_t A[], value_t target, index_t l, index_t r) {
   // TODO
@@ -82,7 +102,7 @@ int main(void) {
 
   // Call the search algorithm
   std::cout << ">>> Executando a Busca ...\n";
-  int result = binary_search(A, target, 0, sz-1);
+  int result = binary_search_ptr(target, A, A+(sz-1));
 
   // Print the result
   if ( result == -1 )  std::cout << "    Target not found!\n";
@@ -92,3 +112,4 @@ int main(void) {
 
   return EXIT_SUCCESS;
 }
+
