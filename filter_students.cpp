@@ -51,23 +51,23 @@ value_type* filter( value_type* first, value_type* last )
 
     return last; // STUB
 }
-/*
+
 value_type* filter_fast( value_type* first, value_type* last )
 {
-    // TODO
+    auto *slow{first};
+    auto *fast{first};
     
-    
-    while(){
-        if(){
-
+    while(fast != last){
+        if(*fast > 0){
+            std::iter_swap(slow, fast);
+            slow++;
         }
-            
+        fast++;
     }
-    
 
-    return last; // STUB
+    return slow; // STUB
 }
-*/
+
 
 int main( )
 {
@@ -82,7 +82,7 @@ int main( )
     std::cout << "], Size = " <<  std::distance( std::begin(A), std::end(A) ) << "\n";
 
     // Filtering
-    auto new_end = filter( std::begin(A), std::end(A) );
+    auto new_end = filter_fast( std::begin(A), std::end(A) );
 
     // Printing the filtered array.
     std::cout << ">>> FILTERED array  = [ ";
